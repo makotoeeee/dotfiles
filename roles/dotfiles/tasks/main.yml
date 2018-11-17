@@ -1,0 +1,6 @@
+- name: Create dotfiles link
+  file:
+    src: "{{ role_path }}/files/{{ item.name }}"
+    dest: "~/.{{ item.name }}"
+    state: link
+  with_items: "{{ dotfiles }}"

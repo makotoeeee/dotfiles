@@ -1,0 +1,6 @@
+dotfiles:
+  - name: tmux.conf
+  - name: vimrc
+  - name: bashrc 
+  - name: inputrc
+

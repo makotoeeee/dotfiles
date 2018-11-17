@@ -1,0 +1,21 @@
+homebrew_taps:
+  - caskroom/cask
+
+homebrew_cask_packages:
+  - name: google-chrome
+  - name: firefox
+  - name: docker
+
+homebrew_packages:
+  - name: awscli
+  - name: terraform
+  - name: vim
+  - name: coreutils # include gls
+  - name: direnv
+  - name: fasd
+  - name: peco
+  - name: bash
+  - name: tmux
+  - name: git
+  - name: ghq
+  - name: go

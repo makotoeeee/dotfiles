@@ -1,0 +1,137 @@
+r_prompt() {
+  printf '\U1F439 '
+}
+
+configure_anyenv() {
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+}
+
+configure_prompt() {
+  PS1='[\W]\$ '
+}
+
+configure_path() {
+  export PATH=/usr/local:$PATH
+}
+
+configure_java() {
+  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+}
+
+configure_pipenv() {
+  export PIPENV_VENV_IN_PROJECT=1
+}
+
+configure_ls() {
+  if which gls > /dev/null; then
+    alias ls='gls --color=auto'
+    alias ll='gls -l --color=auto'
+    eval $(gdircolors ~/.ghq/github.com/seebi/dircolors-solarized/dircolors.256dark)
+  fi
+
+  alias ll='ls -l'
+}
+
+configure_bundler() {
+  alias bip='bundle install --path vendor/bundle'
+  alias ber='bundle exec ruby'
+  alias be='bundle exec'
+}
+
+configure_vim() {
+  alias vi='vim'
+}
+
+configure_python() {
+  export LC_ALL=ja_JP.UTF-8
+  alias mypy='mypy --ignore-missing-imports'
+}
+
+configure_direnv() {
+  eval "$(direnv hook bash)"
+}
+
+configure_fasd() {
+  eval "$(fasd --init auto)"
+}
+
+peco_exists() {
+  which peco > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install peco"
+    return 1
+  fi
+}
+
+fasd_exists() {
+  which fasd > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install fasd"
+    return 1
+  fi
+}
+
+peco_cd() {
+  peco_exists
+  fasd_exists
+  local res=$(fasd -d | sort -rn | cut -c 12- | peco)
+  if [ -n "$res" ]; then
+    cd $res
+  else
+    return 1
+  fi
+}
+
+peco_history() {
+  peco_exists
+  local ree=$(history | sort -r | awk '{$1 = ""; print}' | peco --query "$READLINE_LINE")
+  if [ -n "$res" ]; then
+    READLINE_LINE=$res
+    READLINE_POINT=${#res}
+  else
+    return 1
+  fi
+}
+
+configure_peco() {
+  alias c='peco_cd'
+  alias h='peco_history'
+}
+
+configure_sytem() {
+  alias sl='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+}
+
+configure_aws() {
+  complete -C '/usr/local/bin/aws_completer' aws
+}
+
+wifi() {
+  local usage="Usage: ${FUNCNAME[0]} [on] [off]"
+
+  if [ "$#" -ne 1 ]; then
+    echo "$usage"
+    return 1
+  fi
+  
+  if [ "$1" == "on" ]; then 
+    networksetup -setairportpower en0 on
+  elif [ "$1" == "off" ]; then 
+    networksetup -setairportpower en0 off
+  else
+    echo "$usage"
+    return 1
+  fi
+}
+
+eval_funcs() {
+  # 関数名が"configure_*"の関数を実行
+  local funcs=$(declare -f | grep -oE "configure_\w+")
+
+  for i in $(echo ${funcs}) ; do
+    eval ${i}
+  done
+}
+
+eval_funcs

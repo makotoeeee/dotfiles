@@ -1,0 +1,187 @@
+"============================================================
+" General
+"============================================================
+"set noswapfile "ファイル編集中にスワップファイルを作らない
+set nobackup "バックアップファイルを作らない
+set number "行番号を表示
+set relativenumber
+set laststatus=2 "ステータスラインを常に表示
+set nowrap "行を折り返さない
+set cursorline
+set nocompatible
+set backspace=indent,eol,start
+set colorcolumn=80
+set clipboard=unnamed,autoselect "ヤンクでクリップボードにコピー
+set autochdir " 自動で開いているファイルのディレクトリに移動する
+set hlsearch " 検索時にハイライトする
+set ambiwidth=double
+
+"============================================================
+" Indent 
+"============================================================
+set expandtab "タブ入力を複数の空白入力に置き換える
+set tabstop=4 "画面上でタブ文字が占める幅
+set shiftwidth=2 "自動インデントでずれる幅
+set softtabstop=2 "連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set autoindent "改行時に前の行のインデントを継続する
+set smartindent "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+
+"============================================================
+" Key Mapping 
+"============================================================
+" Like emacs
+imap <C-a> <Home>
+imap <C-e> <End>
+imap <C-b> <Left>
+imap <C-f> <Right>
+imap <C-n> <Down>
+imap <C-p> <UP>
+imap <C-h> <Backspace>
+imap <C-k> <ESC>d$i
+
+" InsertLeaveでC-cが効かないのでC-cをESCに割り当てる
+imap <C-c> <esc>
+
+" For NerdTree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+" For vim-expand-region
+map ; <Plug>(expand_region_expand)
+map + <Plug>(expand_region_shrink)
+
+"============================================================
+" Plugin Manager 
+"============================================================
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'itchyny/lightline.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sgur/ctrlp-extensions.vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+"jsonでダブルクオーテーションが表示されなくなるのでアンインストール
+"Plug 'Yggdroot/indentLine'
+Plug 'mattn/emmet-vim'
+"Plug 'vim-scripts/vim-auto-save'
+Plug 'othree/eregex.vim' " 正規表現 [検索]:M/ [置換]:S/
+Plug 'scrooloose/nerdtree'
+Plug 'kannokanno/previm'
+Plug 'junegunn/vim-easy-align'
+Plug 'glidenote/memolist.vim'
+Plug 'fatih/vim-go'
+Plug 'terryma/vim-expand-region'
+"Plug 'scrooloose/syntastic' 
+Plug 'w0rp/ale'
+" For Language Server
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'Shougo/denite.nvim'
+Plug 'fatih/vim-go'
+call plug#end()
+
+"============================================================
+" Color 
+"============================================================
+syntax enable
+set background=dark
+colorscheme solarized
+
+"============================================================
+" lightline
+"============================================================
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+
+"============================================================
+" ctrlp 
+"============================================================
+"prefix keyの設定
+nmap <Space> [ctrlp]
+nnoremap <silent> [ctrlp]f :<C-u>CtrlP<CR>
+nnoremap <silent> [ctrlp]m :<C-u>CtrlPMRUFiles<CR>
+nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
+nnoremap <silent> [ctrlp]c :<C-u>CtrlPCmdline<CR>
+nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
+
+"============================================================
+" Mac only configuration
+"============================================================
+function! ConfigureMac()
+  if has('mac')
+    call CallDisableIme()
+  endif
+endfunction
+
+function! CallDisableIme()
+  autocmd InsertLeave * call DisableIme() 
+endfunction
+
+function DisableIme()
+  call system("osascript -e \'tell application \"System Events\" to key code {102}\'")
+endfunction
+
+call ConfigureMac()
+
+"============================================================
+" Functions 
+"============================================================
+function! Cal()
+python<<EOS
+import calendar
+import datetime
+import vim
+
+today = datetime.date.today()
+month = today.month
+last_day = calendar.monthrange(today.year, today.month)[-1]
+month_range = ["{0:02d}/{1:02d}".format(month, i) for i in range(1, last_day)]
+current_line_num = vim.current.window.cursor[0]
+vim.current.buffer.append(month_range, current_line_num)
+EOS
+endfunction
+
+"============================================================
+" Previm 
+"============================================================
+"autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+let g:previm_open_cmd = 'open -a safari'
+
+"============================================================
+" memolist.vim 
+"============================================================
+let g:memolist_path = "~/.ghq/github.com/makotoeeee/memo"
+let g:memolist_template_dir_path = "~/.ghq/github.com/makotoeeee/memo/templates"
+let g:memolist_memo_suffix = "md"
+
+"============================================================
+" language-server 
+"============================================================
+" For Python 
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
+if executable('go-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'go-langserver',
+        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+        \ 'whitelist': ['go'],
+        \ })
+endif
+
+"============================================================
+" For ale
+"============================================================
+let g:ale_python_mypy_options = '--ignore-missing-imports'
+
+"============================================================
+" For eregex 
+"============================================================
+let g:eregex_default_enable = 0

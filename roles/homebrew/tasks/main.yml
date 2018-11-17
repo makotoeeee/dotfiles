@@ -1,0 +1,24 @@
+- name: Update homebrew
+  homebrew:
+    update_homebrew: yes
+
+- name: Add homebrew tap
+  homebrew_tap:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ homebrew_taps }}'
+
+- name: Install homebrew cask packages
+  homebrew_cask:
+    name: '{{ item.name }}' 
+    state: installed
+  environment:
+    # GUIツールをインストールする場所を `/Application` に固定
+    HOMEBREW_CASK_OPTS: "--appdir=/Applications"
+  with_items: '{{ homebrew_cask_packages }}'
+
+- name: Install homebrew packages
+  homebrew:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("present") }}'
+  with_items: '{{ homebrew_packages }}'
