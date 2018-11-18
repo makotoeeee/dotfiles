@@ -2,6 +2,10 @@ r_prompt() {
   printf '\U1F439 '
 }
 
+configure_history() {
+  HISTSIZE=50000
+}
+
 configure_anyenv() {
   export PATH="$HOME/.anyenv/bin:$PATH"
   eval "$(anyenv init -)"
