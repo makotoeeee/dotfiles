@@ -20,3 +20,4 @@ homebrew_packages:
   - name: git
   - name: ghq
   - name: go
+  - name: bash-completion
