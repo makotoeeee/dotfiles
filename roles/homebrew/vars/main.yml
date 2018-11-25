@@ -21,3 +21,4 @@ homebrew_packages:
   - name: ghq
   - name: go
   - name: bash-completion
+  - name: binutils
