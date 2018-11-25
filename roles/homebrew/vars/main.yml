@@ -22,3 +22,4 @@ homebrew_packages:
   - name: go
   - name: bash-completion
   - name: binutils
+  - name: hub
