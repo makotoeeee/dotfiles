@@ -16,7 +16,7 @@ configure_prompt() {
 }
 
 configure_path() {
-  export PATH=/usr/local:$PATH
+  export PATH=/usr/local/bin:$PATH
 }
 
 configure_java() {
