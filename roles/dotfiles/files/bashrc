@@ -6,6 +6,10 @@ configure_history() {
   HISTSIZE=50000
 }
 
+configure_go() {
+  export GOPATH=$HOME/.go
+}
+
 configure_anyenv() {
   export PATH="$HOME/.anyenv/bin:$PATH"
   eval "$(anyenv init -)"
@@ -16,7 +20,7 @@ configure_prompt() {
 }
 
 configure_path() {
-  export PATH=/usr/local/bin:$PATH
+  export PATH=~/.go/bin:/usr/local/bin:$PATH
 }
 
 configure_java() {
