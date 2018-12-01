@@ -10,11 +10,6 @@ configure_go() {
   export GOPATH=$HOME/.go
 }
 
-configure_anyenv() {
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
-}
-
 configure_prompt() {
   PS1='[\W]\$ '
 }
