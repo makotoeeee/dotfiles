@@ -3,4 +3,4 @@ dotfiles:
   - name: vimrc
   - name: bashrc 
   - name: inputrc
-
+  - name: gitconfig
