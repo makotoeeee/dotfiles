@@ -88,9 +88,9 @@ peco_cd() {
 
 peco_history() {
   peco_exists
-  local ree=$(history | sort -r | awk '{$1 = ""; print}' | peco --query "$READLINE_LINE")
+  local res=$(history | sort -r | awk '{$1 = ""; print}' | peco --query "$READLINE_LINE")
   if [ -n "$res" ]; then
-    READLINE_LINE=$res
+    READLINE_LINE="$res"
     READLINE_POINT=${#res}
   else
     return 1
