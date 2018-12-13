@@ -22,10 +22,6 @@ configure_java() {
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 }
 
-configure_pipenv() {
-  export PIPENV_VENV_IN_PROJECT=1
-}
-
 configure_ls() {
   if which gls > /dev/null; then
     alias ls='gls --color=auto'
@@ -49,6 +45,14 @@ configure_vim() {
 configure_python() {
   export LC_ALL=ja_JP.UTF-8
   alias mypy='mypy --ignore-missing-imports'
+
+  # For pyenv
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+
+  # For pipenv
+  export PIPENV_VENV_IN_PROJECT=1
 }
 
 configure_direnv() {
