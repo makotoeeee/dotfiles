@@ -3,3 +3,4 @@
     - role: dotfiles
     - role: homebrew
       when: ansible_os_family == "Darwin"
+    - role: pyenv
