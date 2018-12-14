@@ -25,3 +25,4 @@ homebrew_packages:
   - name: hub
   - name: ruby
   - name: pyenv
+  - name: fzf
