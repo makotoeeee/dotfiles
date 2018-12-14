@@ -26,3 +26,4 @@ homebrew_packages:
   - name: ruby
   - name: pyenv
   - name: fzf
+  - name: ag
