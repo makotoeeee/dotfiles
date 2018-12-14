@@ -80,6 +80,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'fatih/vim-go'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "============================================================
@@ -97,15 +99,16 @@ let g:lightline = {
       \ }
 
 "============================================================
-" ctrlp 
+" fzf 
 "============================================================
 "prefix keyの設定
-nmap <Space> [ctrlp]
-nnoremap <silent> [ctrlp]f :<C-u>CtrlP<CR>
-nnoremap <silent> [ctrlp]m :<C-u>CtrlPMRUFiles<CR>
-nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
-nnoremap <silent> [ctrlp]c :<C-u>CtrlPCmdline<CR>
-nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
+nmap <Space> [fzf]
+nnoremap <silent> [fzf]f :<C-u>Files<CR>
+nnoremap <silent> [fzf]m :<C-u>History<CR>
+nnoremap <silent> [fzf]b :<C-u>Buffers<CR>
+nnoremap <silent> [fzf]h :<C-u>History:<CR>
+nnoremap <silent> [fzf]l :<C-u>BLines<CR>
+nnoremap <silent> [fzf]c :<C-u>Colors<CR>
 
 "============================================================
 " Mac only configuration
