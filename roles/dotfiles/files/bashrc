@@ -101,9 +101,21 @@ peco_history() {
   fi
 }
 
+peco_tmux_window() {
+  peco_exists
+  tmux list-windows | peco | awk -F':' '{print $1}' | xargs tmux select-window -t
+}
+
+peco_tmux_pane() {
+  peco_exists
+  tmux list-panes | peco | awk -F':' '{print $1}' | xargs tmux select-pane -t
+}
+
 configure_peco() {
   alias c='peco_cd'
   alias h='peco_history'
+  alias w='peco_tmux_window'
+  alias p='peco_tmux_pane'
 }
 
 configure_sytem() {
