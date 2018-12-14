@@ -109,6 +109,7 @@ nnoremap <silent> [fzf]b :<C-u>Buffers<CR>
 nnoremap <silent> [fzf]h :<C-u>History:<CR>
 nnoremap <silent> [fzf]l :<C-u>BLines<CR>
 nnoremap <silent> [fzf]c :<C-u>Colors<CR>
+nnoremap <silent> [fzf]a :<C-u>Ag<CR>
 
 "============================================================
 " Mac only configuration
