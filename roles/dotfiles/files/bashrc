@@ -44,9 +44,11 @@ configure_alias() {
 
   # For peco
   alias c='peco_cd'
-  alias h='peco_history'
   alias w='peco_tmux_window'
   alias p='peco_tmux_pane'
+
+  # For fzf
+  alias h='fzf_history'
 
   # Screen Lock Comannd
   alias sl='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
@@ -85,6 +87,34 @@ fasd_exists() {
   if [ $? -ne 0 ]; then
     echo "Please install fasd"
     return 1
+  fi
+}
+
+peco_exists() {
+  which peco > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install peco"
+    return 1
+  fi
+}
+
+fzf_exists() {
+  which fzf > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install fzf"
+    return 1
+  fi
+}
+
+fzf_history() {
+  fzf_exists
+  local res=$(history | awk '{print $2}'| sort | uniq | fzf)                                                                                              
+  READLINE_LINE=$res
+  READLINE_POINT=${#res}
+
+  # For osx
+  if [ `uname` = "Darwin" ]; then
+      ${READLINE_LINE}
   fi
 }
 
