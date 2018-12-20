@@ -108,7 +108,7 @@ fzf_exists() {
 
 fzf_history() {
   fzf_exists
-  local res=$(history | awk '{print $2}'| sort | uniq | fzf)                                                                                              
+  local res=$(history | awk '{$1=""; print}' | sort | uniq | fzf)
   READLINE_LINE=$res
   READLINE_POINT=${#res}
 
