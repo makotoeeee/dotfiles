@@ -1,7 +1,7 @@
 - name: Check python version {{ python_version }}
   shell: /usr/local/bin/pyenv versions | grep {{ python_version }}
   register: result
-  failed_when: result.rc not in [0, 1]
+  changed_when: result.rc == 1
 
 - name: Install python {{ python_version }}
   shell: /usr/local/bin/pyenv install {{ python_version }}
