@@ -6,6 +6,7 @@ homebrew_cask_packages:
   - name: firefox
   - name: docker
   - name: shiftlt
+  - name: virtualbox
 
 homebrew_packages:
   - name: awscli
