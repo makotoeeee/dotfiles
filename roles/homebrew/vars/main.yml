@@ -28,3 +28,4 @@ homebrew_packages:
   - name: pyenv
   - name: fzf
   - name: ag
+  - name: sqlite3
