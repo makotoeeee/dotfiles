@@ -8,6 +8,7 @@ configure_history() {
 
 configure_go() {
   export GOPATH=$HOME/.go
+  export GO111MODULE=on
 }
 
 configure_prompt() {
