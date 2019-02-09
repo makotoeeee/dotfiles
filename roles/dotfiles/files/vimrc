@@ -73,6 +73,10 @@ Plug 'w0rp/ale'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 
+" complete
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -168,6 +172,9 @@ let g:lsp_diagnostics_enabled = 0 "Lintはaleで行うため無効にする
 " For ale
 "============================================================
 let g:ale_python_mypy_options = '--ignore-missing-imports'
+
+" 左端のシンボルカラムを表示したままにする
+let g:ale_sign_column_always = 1
 
 "============================================================
 " For eregex 
