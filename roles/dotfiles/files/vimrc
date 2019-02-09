@@ -56,30 +56,24 @@ map + <Plug>(expand_region_shrink)
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'sgur/ctrlp-extensions.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
-"jsonでダブルクオーテーションが表示されなくなるのでアンインストール
-"Plug 'Yggdroot/indentLine'
 Plug 'mattn/emmet-vim'
 "Plug 'vim-scripts/vim-auto-save'
 Plug 'othree/eregex.vim' " 正規表現 [検索]:M/ [置換]:S/
 Plug 'scrooloose/nerdtree'
-Plug 'kannokanno/previm'
 Plug 'junegunn/vim-easy-align'
-Plug 'glidenote/memolist.vim'
 Plug 'fatih/vim-go'
 Plug 'terryma/vim-expand-region'
-"Plug 'scrooloose/syntastic' 
+
+" Asynchronous Lint Engine
 Plug 'w0rp/ale'
+
 " For Language Server
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'Shougo/denite.nvim'
-Plug 'fatih/vim-go'
+
+" fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -147,19 +141,6 @@ current_line_num = vim.current.window.cursor[0]
 vim.current.buffer.append(month_range, current_line_num)
 EOS
 endfunction
-
-"============================================================
-" Previm 
-"============================================================
-"autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-let g:previm_open_cmd = 'open -a safari'
-
-"============================================================
-" memolist.vim 
-"============================================================
-let g:memolist_path = "~/.ghq/github.com/makotoeeee/memo"
-let g:memolist_template_dir_path = "~/.ghq/github.com/makotoeeee/memo/templates"
-let g:memolist_memo_suffix = "md"
 
 "============================================================
 " language-server 
