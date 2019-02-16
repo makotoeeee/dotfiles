@@ -1,5 +1,5 @@
 # My dotfiles 
-Set up my osx.
+Set up my osx. :computer:
 
 ## Usage
 
