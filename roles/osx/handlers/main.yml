@@ -1,0 +1,5 @@
+- name: restart_dock
+  shell: killall Dock
+
+- name: restart_osx
+  shell: sudo shutdown -r now 

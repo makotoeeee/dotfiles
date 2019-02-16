@@ -1,0 +1,29 @@
+- name: Autohide Dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  notify: restart_dock 
+
+- name: Show dock on left side
+  osx_defaults:
+    domain: com.apple.dock
+    key: orientation
+    type: string
+    value: left
+  notify: restart_dock 
+
+- name: Fastest InitialKeyRepeat
+  osx_defaults:
+    key: InitialKeyRepeat
+    type: int 
+    value: 15
+  notify: restart_osx 
+
+- name: Fastest KeyRepeat
+  osx_defaults:
+    key: lKeyRepeat
+    type: int 
+    value: 2
+  notify: restart_osx 
