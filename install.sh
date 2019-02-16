@@ -1,6 +1,8 @@
 #!/bin/bash
+path=$(cd $(dirname $0); pwd)
+source $path/scripts/utils.sh
 
-echo "[INFO] Starting......"
+ilog "Starting......"
 
 readonly DOTFILES_DIR=~/.ghq/github.com/makotoeeee/dotfiles
 readonly REPO_URL=https://github.com/makotoeeee/dotfiles
@@ -12,4 +14,4 @@ fi
 cd $DOTFILES_DIR
 make all
 
-echo "[info] Finished!"
+ilog "Finished!"
