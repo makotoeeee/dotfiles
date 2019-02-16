@@ -147,14 +147,14 @@ peco_history() {
   fi
 }
 
-peco_tmux_window() {
-  peco_exists
-  tmux list-windows | peco | awk -F':' '{print $1}' | xargs tmux select-window -t
+fzf_tmux_window() {
+  fzf_exists
+  tmux list-windows | fzf | awk -F':' '{print $1}' | xargs tmux select-window -t
 }
 
-peco_tmux_pane() {
-  peco_exists
-  tmux list-panes | peco | awk -F':' '{print $1}' | xargs tmux select-pane -t
+fzf_tmux_pane() {
+  fzf_exists
+  tmux list-panes | fzf | awk -F':' '{print $1}' | xargs tmux select-pane -t
 }
 
 configure_aws() {
