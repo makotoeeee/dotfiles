@@ -4,10 +4,6 @@ configure_bashcompletion() {
   fi
 }
 
-r_prompt() {
-  printf '\U1F439 '
-}
-
 configure_history() {
   HISTSIZE=50000
 }
