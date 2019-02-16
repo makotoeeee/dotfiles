@@ -174,7 +174,7 @@ let g:lsp_diagnostics_enabled = 0 "Lintはaleで行うため無効にする
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 " 左端のシンボルカラムを表示したままにする
-let g:ale_sign_column_always = 1
+"let g:ale_sign_column_always = 1
 
 "============================================================
 " For eregex 
