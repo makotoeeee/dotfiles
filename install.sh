@@ -10,11 +10,13 @@ fi
 
 cd ${DIR}
 
-if [ ! -n "$(ls $DIR)" ]; then
+readonly DOTFILES_DIR=~/.ghq/github.com/makotoeeee/dotfiles
+
+if [ ! -n "$(ls $DOTFILES_DIR)" ]; then
   git clone https://github.com/makotoeeee/dotfiles
 fi
 
-cd ${DIR}/dotfiles
+cd ${DOTFILES_DIR}
 make all
 
 echo "[info] Finished!"
