@@ -7,7 +7,7 @@ init: install-homebrew install-ansible ## Install homebrew and ansible
 setup: ## Execute ansible playbook
 	ansible-playbook -i hosts localhost.yml
 
-destroy: ## Uninstall homebrewbrew 
+destroy: ## Uninstall homebrewbrew
 	./scripts/uninstall-homebrew.sh
 
 clean: ## Delete localhost.retry
