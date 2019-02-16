@@ -46,12 +46,12 @@ configure_alias() {
   alias mypy='mypy --ignore-missing-imports'
 
   # For peco
-  alias c='peco_cd'
   alias w='peco_tmux_window'
   alias p='peco_tmux_pane'
 
   # For fzf
   alias h='fzf_history'
+  alias c='fzf_cd'
 
   # Screen Lock Comannd
   alias sl='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
@@ -75,14 +75,6 @@ configure_direnv() {
 
 configure_fasd() {
   eval "$(fasd --init auto)"
-}
-
-peco_exists() {
-  which peco > /dev/null
-  if [ $? -ne 0 ]; then
-    echo "Please install peco"
-    return 1
-  fi
 }
 
 fasd_exists() {
@@ -121,10 +113,10 @@ fzf_history() {
   fi
 }
 
-peco_cd() {
-  peco_exists
+fzf_cd() {
+  fzf_exists
   fasd_exists
-  local res=$(fasd -d | sort -rn | cut -c 12- | peco)
+  local res=$(fasd -d | sort -rn | cut -c 12- | fzf)
   if [ -n "$res" ]; then
     cd $res
   else
