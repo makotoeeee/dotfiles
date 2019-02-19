@@ -171,10 +171,19 @@ let g:lsp_diagnostics_enabled = 0 "Lintはaleで行うため無効にする
 "============================================================
 " For ale
 "============================================================
-let g:ale_python_mypy_options = '--ignore-missing-imports'
+"使用するlinterを指定する
+let g:ale_linters = {
+\   'python': ['flake8', 'mypy'],
+\}
+
+" linterの名前を表示する
+let g:ale_echo_msg_format = '[%linter%] %s'
 
 " 左端のシンボルカラムを表示したままにする
 "let g:ale_sign_column_always = 1
+
+" For python
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 "============================================================
 " For eregex 
