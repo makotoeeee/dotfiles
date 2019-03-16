@@ -29,3 +29,4 @@ homebrew_packages:
   - name: fzf
   - name: ag
   - name: sqlite3
+  - name: htop
