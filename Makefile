@@ -21,8 +21,8 @@ clone: ## Clone dotfiles repository
 		git clone $(REPO_URL) $(DOTFILES_DIR);\
 		echo "$(ILOG) Finish cloning dotfiles repository";\
 		exit 0;\
-	fi
-	@echo "$(ILOG) dotfiles repository already exists"
+	fi;\
+	echo "$(ILOG) dotfiles repository already exists"
 
 setup: ## Execute ansible playbook
 	@./scripts/run-ansible-playbook.sh
