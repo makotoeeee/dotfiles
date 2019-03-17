@@ -2,16 +2,30 @@
 path=$(cd $(dirname $0); pwd)
 source $path/scripts/utils.sh
 
-ilog "Starting......"
+clone_dotfiles_repo() {
+  ilog "Start cloning dotfiles repository"
 
-readonly DOTFILES_DIR=~/.ghq/github.com/makotoeeee/dotfiles
-readonly REPO_URL=https://github.com/makotoeeee/dotfiles
+  if [ ! -d $DOTFILES_DIR ]; then
+    git clone $REPO_URL $DOTFILES_DIR
+    ilog "Finish cloning dotfiles repository"
+  fi
 
-if [ ! -d $DOTFILES_DIR ]; then
-  git clone $REPO_URL $DOTFILES_DIR
-fi
+  ilog "dotfiles repository already exists"
+}
 
-cd $DOTFILES_DIR
-make all
+execute_make() {
+  cd $DOTFILES_DIR
+  make all
+}
 
-ilog "Finished!"
+main() {
+  readonly DOTFILES_DIR=~/.ghq/github.com/makotoeeee/dotfiles
+  readonly REPO_URL=https://github.com/makotoeeee/dotfiles
+
+  ilog "Starting......"
+  clone_dotfiles_repo
+  execute_make
+  ilog "Finished!"
+}
+
+main
