@@ -1,10 +1,26 @@
 .DEFAULT_GOAL := help
 DOTFILES_DIR := ~/.ghq/github.com/makotoeeee/dotfiles
 REPO_URL := https://github.com/makotoeeee/dotfiles
+ILOG = $(shell echo $$(date +'%FT%T') [info])
 
-all: init setup ## Install homebrew and ansible, then run ansible playbook
+.PHONY: install init setup destroy clean install-homebrew install-ansible help logstart logfinished
 
-init: install-homebrew install-ansible ## Install homebrew and ansible
+install: logstart init setup logfinished ## Clone the dotfiles repository, Install homebrew and Ansible. Then run ansible-playbook.
+
+init: clone install-homebrew install-ansible ## Clone the dotfiles repository, Install homebrew and Ansible.
+
+logstart:
+	@echo "$(ILOG) Starting......"
+
+logfinished:
+	@echo "$(ILOG) Finished!"
+
+clone: ## Clone dotfiles repository
+	@if [ ! -d $(DOTFILES_DIR) ]; then\
+       git clone $(REPO_URL) $(DOTFILES_DIR);\
+       echo "$(ILOG) Finish cloning dotfiles repository";\
+     fi
+	@echo "$(ILOG) dotfiles repository already exists"
 
 setup: ## Execute ansible playbook
 	@./scripts/run-ansible-playbook.sh
