@@ -16,9 +16,11 @@ logfinished:
 	@echo "$(ILOG) Finished!"
 
 clone: ## Clone dotfiles repository
+	@echo "$(ILOG) start clone dotfiles repository"
 	@if [ ! -d $(DOTFILES_DIR) ]; then\
 		git clone $(REPO_URL) $(DOTFILES_DIR);\
 		echo "$(ILOG) Finish cloning dotfiles repository";\
+		exit 0;\
 	fi
 	@echo "$(ILOG) dotfiles repository already exists"
 
