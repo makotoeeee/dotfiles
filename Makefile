@@ -3,9 +3,9 @@ DOTFILES_DIR := ~/.ghq/github.com/makotoeeee/dotfiles
 REPO_URL := https://github.com/makotoeeee/dotfiles
 ILOG = $(shell echo $$(date +'%FT%T') [info])
 
-.PHONY: install init setup destroy clean install-homebrew install-ansible help logstart logfinished
+.PHONY: install init run-ansible-playbook destroy clean install-homebrew install-ansible help logstart logfinished
 
-install: logstart init setup logfinished ## Clone the dotfiles repository, Install homebrew and Ansible. Then run ansible-playbook.
+install: logstart init run-ansible-playbook logfinished ## Clone the dotfiles repository, Install homebrew and Ansible. Then run ansible-playbook.
 
 init: clone install-homebrew install-ansible ## Clone the dotfiles repository, Install homebrew and Ansible.
 
@@ -24,7 +24,7 @@ clone: ## Clone dotfiles repository
 	fi;\
 	echo "$(ILOG) dotfiles repository already exists"
 
-setup: ## Execute ansible playbook
+run-ansible-playbook: ## Execute ansible playbook
 	@$(DOTFILES_DIR)/scripts/run-ansible-playbook.sh
 
 destroy: ## Uninstall homebrewbrew
