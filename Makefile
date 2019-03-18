@@ -2,6 +2,7 @@
 DOTFILES_DIR := ~/.ghq/github.com/makotoeeee/dotfiles
 REPO_URL := https://github.com/makotoeeee/dotfiles
 ILOG = $(shell echo $$(date +'%FT%T') [info])
+OS :=$(shell uname)
 
 .PHONY: install init run-ansible-playbook destroy clean install-homebrew install-ansible help logstart logfinished
 
@@ -28,16 +29,16 @@ run-ansible-playbook: ## Execute ansible playbook
 	@$(DOTFILES_DIR)/scripts/run-ansible-playbook.sh
 
 destroy: ## Uninstall homebrewbrew
-	@$(DOTFILES_DIR)/scripts/uninstall-homebrew.sh
+	@$(DOTFILES_DIR)/scripts/$(OS)/uninstall-homebrew.sh
 
 clean: ## Delete localhost.retry
 	rm -f localhost.retry
 
 install-homebrew: ## Install homebrew
-	@$(DOTFILES_DIR)/scripts/install-homebrew.sh
+	@$(DOTFILES_DIR)/scripts/$(OS)/install-homebrew.sh
 
 install-ansible: ## Install Ansible
-	@$(DOTFILES_DIR)/scripts/install-ansible.sh
+	@$(DOTFILES_DIR)/scripts/$(OS)/install-ansible.sh
 
 help: ## Display help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
