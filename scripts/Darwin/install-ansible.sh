@@ -1,6 +1,6 @@
 #!/bin/bash
 path=$(cd $(dirname $0); pwd)
-source $path/../utils.sh
+source $path/../utils/log.sh
 
 ilog "Start installing ansible"
 
