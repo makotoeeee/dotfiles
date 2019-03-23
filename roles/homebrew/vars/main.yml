@@ -7,6 +7,7 @@ homebrew_cask_packages:
   - name: docker
   - name: shiftlt
   - name: virtualbox
+  - name: google-cloud-sdk
 
 homebrew_packages:
   - name: awscli
