@@ -9,6 +9,7 @@ homebrew_cask_packages:
   - name: virtualbox
   - name: google-cloud-sdk
   - name: 1password
+  - name: macvim
 
 homebrew_packages:
   - name: awscli
