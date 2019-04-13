@@ -1,5 +1,5 @@
 # My dotfiles 
-Set up my osx. :computer:
+Set up my osx with Ansible. :computer:
 
 ## Usage
 
