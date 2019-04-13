@@ -26,19 +26,19 @@ clone: ## Clone dotfiles repository
 	echo "$(ILOG) dotfiles repository already exists"
 
 run-ansible-playbook: ## Execute ansible playbook
-	@$(DOTFILES_DIR)/scripts/run-ansible-playbook.sh
+	@bash $(DOTFILES_DIR)/scripts/run-ansible-playbook.sh
 
 destroy: ## Uninstall homebrewbrew
-	@$(DOTFILES_DIR)/scripts/$(OS)/uninstall-homebrew.sh
+	@bash $(DOTFILES_DIR)/scripts/$(OS)/uninstall-homebrew.sh
 
 clean: ## Delete localhost.retry
 	rm -f localhost.retry
 
 install-homebrew: ## Install homebrew
-	@$(DOTFILES_DIR)/scripts/$(OS)/install-homebrew.sh
+	@bash $(DOTFILES_DIR)/scripts/$(OS)/install-homebrew.sh
 
 install-ansible: ## Install Ansible
-	@$(DOTFILES_DIR)/scripts/$(OS)/install-ansible.sh
+	@bash $(DOTFILES_DIR)/scripts/$(OS)/install-ansible.sh
 
 help: ## Display help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
