@@ -8,6 +8,7 @@ homebrew_cask_packages:
   - name: shiftlt
   - name: virtualbox
   - name: google-cloud-sdk
+  - name: 1password
 
 homebrew_packages:
   - name: awscli
