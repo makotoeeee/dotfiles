@@ -34,3 +34,4 @@ homebrew_packages:
   - name: sqlite3
   - name: htop
   - name: watch
+  - name: elixir
