@@ -5,4 +5,3 @@
       when: ansible_os_family == "Darwin"
     - role: homebrew
       when: ansible_os_family == "Darwin"
-    - role: pyenv

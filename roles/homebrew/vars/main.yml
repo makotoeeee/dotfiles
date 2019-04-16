@@ -28,7 +28,7 @@ homebrew_packages:
   - name: binutils
   - name: hub
   - name: ruby
-  - name: pyenv
+  - name: python
   - name: fzf
   - name: ag
   - name: sqlite3
