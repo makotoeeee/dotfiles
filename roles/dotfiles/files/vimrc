@@ -81,6 +81,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+
+" For Elixir
+Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
 "============================================================
