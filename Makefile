@@ -4,11 +4,11 @@ REPO_URL := https://github.com/makotoeeee/dotfiles
 ILOG = $(shell echo $$(date +'%FT%T') [info])
 OS :=$(shell uname)
 
-.PHONY: install init run-ansible-playbook destroy clean install-homebrew install-ansible help logstart logfinished
+.PHONY: install prepare run-ansible-playbook destroy clean install-homebrew install-ansible help logstart logfinished
 
-install: logstart init run-ansible-playbook logfinished ## Clone the dotfiles repository, Install homebrew and Ansible. Then run ansible-playbook.
+install: logstart prepare run-ansible-playbook logfinished ## Clone the dotfiles repository, Install homebrew and Ansible. Then run ansible-playbook.
 
-init: clone install-homebrew install-ansible ## Clone the dotfiles repository, Install homebrew and Ansible.
+prepare: clone install-homebrew install-ansible ## Clone the dotfiles repository, Install homebrew and Ansible.
 
 logstart:
 	@echo "$(ILOG) Starting......"
