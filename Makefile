@@ -28,8 +28,9 @@ clone: ## Clone dotfiles repository
 run-ansible-playbook: ## Execute ansible playbook
 	@bash $(DOTFILES_DIR)/scripts/run-ansible-playbook.sh
 
-destroy: ## Uninstall homebrewbrew
+destroy: ## Uninstall homebrew, Command Line Tools for Xcode.
 	@bash $(DOTFILES_DIR)/scripts/$(OS)/uninstall-homebrew.sh
+	@bash $(DOTFILES_DIR)/scripts/$(OS)/uninstall-command-line-tools-for-Xcode.sh
 
 clean: ## Delete localhost.retry
 	rm -f localhost.retry
