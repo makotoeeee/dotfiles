@@ -10,6 +10,7 @@ homebrew_cask_packages:
   - name: 1password
   - name: macvim
   - name: hyperswitch
+  - name: spectacle
 
 homebrew_packages:
   - name: awscli
