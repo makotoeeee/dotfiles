@@ -10,6 +10,7 @@ homebrew_cask_packages:
   - name: google-cloud-sdk
   - name: 1password
   - name: macvim
+  - name: hyperswitch
 
 homebrew_packages:
   - name: awscli
