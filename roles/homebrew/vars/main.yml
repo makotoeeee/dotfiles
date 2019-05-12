@@ -11,6 +11,7 @@ homebrew_cask_packages:
   - name: macvim
   - name: hyperswitch
   - name: spectacle
+  - name: tor-browser
 
 homebrew_packages:
   - name: awscli
