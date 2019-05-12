@@ -5,7 +5,6 @@ homebrew_cask_packages:
   - name: google-chrome
   - name: firefox
   - name: docker
-  - name: amethyst
   - name: virtualbox
   - name: google-cloud-sdk
   - name: 1password
