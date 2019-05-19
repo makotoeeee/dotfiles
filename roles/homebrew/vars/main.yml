@@ -38,3 +38,5 @@ homebrew_packages:
   - name: watch
   - name: elixir
   - name: node
+  - name: nkf
+  - name: jq
