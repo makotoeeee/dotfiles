@@ -1,7 +1,7 @@
 - name: Create dotfiles link
   file:
     src: "{{ item }}"
-    dest: "~/.{{ item | regex_replace('^.*/','')}}"
+    dest: "~/.{{ item | basename }}"
     state: link
   with_fileglob:
     - "files/*"
