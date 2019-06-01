@@ -1,6 +1,7 @@
 - name: Create dotfiles link
   file:
-    src: "{{ role_path }}/files/{{ item.name }}"
-    dest: "~/.{{ item.name }}"
+    src: "{{ item }}"
+    dest: "~/.{{ item | regex_replace('^.*/','')}}"
     state: link
-  with_items: "{{ dotfiles }}"
+  with_fileglob:
+    - "files/*"
