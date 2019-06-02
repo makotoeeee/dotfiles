@@ -4,7 +4,7 @@
     key: autohide
     type: bool
     value: true
-  notify: restart_dock 
+  notify: Restart dock 
 
 - name: Show dock on left side
   osx_defaults:
@@ -12,18 +12,18 @@
     key: orientation
     type: string
     value: left
-  notify: restart_dock 
+  notify: Restart dock 
 
 - name: Fastest InitialKeyRepeat
   osx_defaults:
     key: InitialKeyRepeat
     type: int 
     value: 15
-  notify: restart_osx 
+  notify: Restart osx 
 
 - name: Fastest KeyRepeat
   osx_defaults:
     key: lKeyRepeat
     type: int 
     value: 2
-  notify: restart_osx 
+  notify: Restart osx 

@@ -1,5 +1,5 @@
-- name: restart_dock
+- name: Restart dock
   shell: killall Dock
 
-- name: restart_osx
+- name: Restart osx
   shell: sudo shutdown -r now 
