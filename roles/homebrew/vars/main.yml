@@ -1,5 +1,6 @@
 homebrew_taps:
-  - caskroom/cask
+  - name: caskroom/cask
+  - name: homebrew/cask-fonts
 
 homebrew_cask_packages:
   - name: google-chrome
@@ -12,6 +13,9 @@ homebrew_cask_packages:
   - name: hyperswitch
   - name: spectacle
   - name: tor-browser
+  - name: java
+  - name: android-studio
+  - name: font-ricty-diminished
 
 homebrew_packages:
   - name: awscli
