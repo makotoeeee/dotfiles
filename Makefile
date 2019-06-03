@@ -26,7 +26,9 @@ clone: ## Clone dotfiles repository
 	echo "$(ILOG) dotfiles repository already exists"
 
 run-ansible-playbook: ## Execute ansible playbook
-	@bash $(DOTFILES_DIR)/scripts/run-ansible-playbook.sh
+	@echo "$(ILOG) Run ansible-playbook"
+	@ansible-playbook -i hosts localhost.yml
+	@echo "$(ILOG) Finished ansible-playbook"
 
 destroy: ## Uninstall homebrew, Command Line Tools for Xcode.
 	@bash $(DOTFILES_DIR)/scripts/$(OS)/uninstall-homebrew.sh
