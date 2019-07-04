@@ -45,7 +45,9 @@ install-ansible: ## Install Ansible
 
 test-lib:
 	touch test
+	ls -l test*
 	ansible localhost -i hosts --connection=local -m move -a src="test" --module-path=./library/
+	ls -l test*
 	rm test*
 
 help: ## Display help
