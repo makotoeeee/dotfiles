@@ -79,8 +79,7 @@ def main():
         )
         module.fail_json(msg=msg)
     
-    changed = homebrew.changed
-    module.exit_json(state=state, changed=changed)
+    module.exit_json(state=state, changed=homebrew.changed)
 
 if __name__ == '__main__':
     main()
