@@ -42,9 +42,8 @@ class Homebrew:
         if not self.__module.get_bin_path('brew', False):
             self.__command = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
             self.__run_command(self.__command)
-            return 0 
-
-        self.__changed = False 
+        else:
+            self.__changed = False 
 
     # Uninstall Homebrew
     def absent(self):
@@ -54,9 +53,8 @@ class Homebrew:
         if self.__module.get_bin_path('brew', False):
             self.__command = "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
             self.__run_command(self.__command)
-            return 0 
-
-        self.changed = False 
+        else:
+            self.changed = False 
 
     def __run_command(self, command):
         self.__rc, self.__out, self.__err = self.__module.run_command(comannd)
