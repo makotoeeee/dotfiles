@@ -1,8 +1,5 @@
 #!/usr/bin/python
 
-import os
-import datetime
-import shutil
 from ansible.module_utils.basic import *
 
 class Homebrew:
@@ -63,18 +60,31 @@ def define_module_args():
 
     return args
 
+def validate_state_value(state):
+    if state in ('latest', 'absent'):
+        msg = state + " is not defined."
+        return True
+    else:
+        return False
+
+def validate_retrun_code_value(homebrew):
+    if homebrew.rc is 0:
+        return True
+    else:
+        return False
+
 def main():
     module = AnsibleModule(argument_spec=define_module_args())
     state = module.params['state']
     homebrew = Homebrew(module)
 
-    if state not in ['latest', 'absent']:
+    if not validate_state_value(state): 
         msg = state + " is not defined."
         module.fail_json(msg=msg)
 
     getattr(homebrew, state)()
 
-    if homebrew.rc != 0:
+    if not validate_retrun_code_value(homebrew):
         msg = '{0} Failed. rc={1}, out={2}, err={3}'.format(
             homebrew.command, homebrew.rc, homebrew.out, homebrew.err
         )
