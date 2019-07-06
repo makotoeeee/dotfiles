@@ -43,12 +43,5 @@ install-homebrew: ## Install homebrew
 install-ansible: ## Install Ansible
 	@bash $(DOTFILES_DIR)/scripts/$(OS)/install-ansible.sh
 
-test-lib:
-	touch test
-	ls -l test*
-	ansible localhost -i hosts --connection=local -m move -a src="test" --module-path=./library/
-	ls -l test*
-	rm test*
-
 help: ## Display help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
