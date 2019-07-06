@@ -34,22 +34,14 @@ class Homebrew:
     def command(self):
         return self.__command
 
-    # Install Homebrew
-    def latest(self):
-        self.__install()
-
-    def __install(self):
+    def install(self):
         if not self.__module.get_bin_path('brew', False):
             self.__command = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
             self.__run_command(self.__command)
         else:
             self.__changed = False 
 
-    # Uninstall Homebrew
-    def absent(self):
-        self.__uninstall()
-
-    def __uninstall(self):
+    def uninstall(self):
         if self.__module.get_bin_path('brew', False):
             self.__command = "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
             self.__run_command(self.__command)
@@ -59,6 +51,10 @@ class Homebrew:
     def __run_command(self, command):
         self.__rc, self.__out, self.__err = self.__module.run_command(comannd)
         self.__changed = True
+
+    # Define method alias
+    latest = install
+    absent = uninstall
 
 def define_module_args():
     args = dict(
