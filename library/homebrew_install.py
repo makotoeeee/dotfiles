@@ -54,15 +54,15 @@ class Homebrew:
         self.__rc, self.__out, self.__err = self.__module.run_command(comannd)
         self.__changed = True
 
-def get_argument():
-    argument_spec = dict(
-        state = dict(required=True)
+def define_module_args():
+    args = dict(
+        state=dict(type='str', required=True)
     )
 
-    return argument_spec
+    return args
 
 def main():
-    module = AnsibleModule(argument_spec=get_argument())
+    module = AnsibleModule(argument_spec=define_module_args())
     state = module.params['state']
     homebrew = Homebrew(module)
 
