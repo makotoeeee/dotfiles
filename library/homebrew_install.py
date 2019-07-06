@@ -67,11 +67,11 @@ def validate_state_value(state):
     else:
         return False
 
-def validate_retrun_code_value(homebrew):
+def is_homebrew_failed(homebrew):
     if homebrew.rc is 0:
-        return True
-    else:
         return False
+    else:
+        return True
 
 def main():
     module = AnsibleModule(argument_spec=define_module_args())
@@ -84,7 +84,7 @@ def main():
 
     getattr(homebrew, state)()
 
-    if not validate_retrun_code_value(homebrew):
+    if is_homebrew_failed(homebrew):
         msg = '{0} Failed. rc={1}, out={2}, err={3}'.format(
             homebrew.command, homebrew.rc, homebrew.out, homebrew.err
         )
