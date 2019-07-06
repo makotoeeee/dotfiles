@@ -36,17 +36,25 @@ class Homebrew:
 
     # Install Homebrew
     def latest(self):
+        self.__install()
+
+    def __install(self):
         if not self.__module.get_bin_path('brew', False):
             self.__command = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
             self.__run_command(self.__command)
+            return 0 
 
         self.__changed = False 
 
     # Uninstall Homebrew
     def absent(self):
+        self.__uninstall()
+
+    def __uninstall(self):
         if self.__module.get_bin_path('brew', False):
             self.__command = "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
             self.__run_command(self.__command)
+            return 0 
 
         self.changed = False 
 
@@ -66,11 +74,11 @@ def main():
     state = module.params['state']
     homebrew = Homebrew(module)
 
-    try:
-        getattr(homebrew, state)()
-    except AttributeError:
+    if state not in ['latest', 'absent']:
         msg = state + " is not defined."
         module.fail_json(msg=msg)
+
+    getattr(homebrew, state)()
 
     if homebrew.rc != 0:
         msg = '{0} Failed. rc={1}, out={2}, err={3}'.format(
