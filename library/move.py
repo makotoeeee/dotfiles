@@ -10,20 +10,22 @@ def get_argument():
         src = dict(required=True)
     )
 
-    return AnsibleModule(argument_spec = argument_spec)
+    return argument_spec
+
+def time_stamp():
+    return datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
 def main():
-    module = get_argument()
-    time_stamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+    module = AnsibleModule(argument_spec=get_argument())
     src = os.path.expanduser(module.params['src'])
+    dst = src + '.bk.' + time_stamp()
     changed = False
 
     if os.path.exists(src) and not os.path.islink(src):
-        dst = src + '_' + time_stamp
         shutil.move(src, dst)
         changed = True
 
-    module.exit_json(src=src, changed=changed)
+    module.exit_json(src=src, dst=dst, changed=changed)
 
 if __name__ == '__main__':
     main()
