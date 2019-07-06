@@ -43,7 +43,13 @@ class Homebrew:
             self.__command = "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
             self.__run_command(self.__command)
         else:
-            self.changed = False 
+            self.__changed = False 
+
+    def is_failed(self):
+        if self.__rc is 0:
+            return False
+        else:
+            return True
 
     def __run_command(self, command):
         self.__rc, self.__out, self.__err = self.__module.run_command(comannd)
@@ -67,12 +73,6 @@ def validate_state_value(state):
     else:
         return False
 
-def is_homebrew_failed(homebrew):
-    if homebrew.rc is 0:
-        return False
-    else:
-        return True
-
 def main():
     module = AnsibleModule(argument_spec=define_module_args())
     state = module.params['state']
@@ -84,7 +84,7 @@ def main():
 
     getattr(homebrew, state)()
 
-    if is_homebrew_failed(homebrew):
+    if homebrew.is_failed():
         msg = '{0} Failed. rc={1}, out={2}, err={3}'.format(
             homebrew.command, homebrew.rc, homebrew.out, homebrew.err
         )
