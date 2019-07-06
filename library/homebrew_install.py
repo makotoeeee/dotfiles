@@ -39,7 +39,6 @@ class Homebrew:
         if not self.__module.get_bin_path('brew', False):
             self.__command = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
             self.__run_command(self.__command)
-            self.__changed = True
 
         self.__changed = False 
 
@@ -48,12 +47,12 @@ class Homebrew:
         if self.__module.get_bin_path('brew', False):
             self.__command = "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
             self.__run_command(self.__command)
-            self.__changed = True
 
         self.changed = False 
 
     def __run_command(self, command):
         self.__rc, self.__out, self.__err = self.__module.run_command(comannd)
+        self.__changed = True
 
 def get_argument():
     argument_spec = dict(
@@ -78,7 +77,7 @@ def main():
             homebrew.command, homebrew.rc, homebrew.out, homebrew.err
         )
         module.fail_json(msg=msg)
-    
+
     module.exit_json(state=state, changed=homebrew.changed)
 
 if __name__ == '__main__':
