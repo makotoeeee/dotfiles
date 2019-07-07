@@ -4,56 +4,56 @@ from ansible.module_utils.basic import *
 
 class Homebrew:
     def __init__(self, module):
-        self.__module = module
-        self.__command = ""
-        self.__changed = True
-        self.__rc = 0
-        self.__out = ""
-        self.__err = "" 
+        self._module = module
+        self._command = ""
+        self._changed = True
+        self._rc = 0
+        self._out = ""
+        self._err = "" 
 
     @property
     def changed(self):
-        return self.__changed
+        return self._changed
 
     @property
     def rc(self):
-        return self.__rc
+        return self._rc
 
     @property
     def out(self):
-        return self.__out
+        return self._out
 
     @property
     def err(self):
-        return self.__err
+        return self._err
 
     @property
     def command(self):
-        return self.__command
+        return self._command
 
     def install(self):
-        if not self.__module.get_bin_path('brew', False):
-            self.__command = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-            self.__run_command(self.__command)
+        if not self._module.get_bin_path('brew', False):
+            self._command = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            self._run_command(self._command)
         else:
-            self.__changed = False 
+            self._changed = False 
 
     def uninstall(self):
-        if self.__module.get_bin_path('brew', False):
-            self.__command = "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
-            self.__run_command(self.__command)
+        if self._module.get_bin_path('brew', False):
+            self._command = "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+            self._run_command(self._command)
         else:
-            self.__changed = False 
+            self._changed = False 
 
     def is_failed(self):
-        if self.__rc is 0:
+        if self._rc is 0:
             return False
         else:
             return True
 
-    def __run_command(self, command):
-        self.__rc, self.__out, self.__err = self.__module.run_command(comannd)
-        self.__changed = True
+    def _run_command(self, command):
+        self._rc, self._out, self._err = self._module.run_command(comannd)
+        self._changed = True
 
     # Define method alias
     latest = install
