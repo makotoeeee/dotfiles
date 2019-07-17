@@ -44,3 +44,4 @@ homebrew_packages:
   - name: node
   - name: nkf
   - name: jq
+  - name: postgresql
