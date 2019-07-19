@@ -41,6 +41,14 @@ configure_alias() {
   # For Python
   alias mypy='mypy --ignore-missing-imports'
 
+  if which python3 > /dev/null; then
+    alias python='python3'
+  fi
+
+  if which pip3 > /dev/null; then
+    alias pip='pip3'
+  fi
+
   # For peco
   alias w='peco_tmux_window'
   alias p='peco_tmux_pane'
