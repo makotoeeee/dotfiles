@@ -25,20 +25,22 @@ configure_java() {
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 }
 
-configure_alias() {
-  # For ls command
+configure_ls_alias() {
   alias ls='ls -G'
   alias ll='ls -lG'
+}
 
-  # For ruby
+configure_ruby_alias() {
   alias bip='bundle install --path vendor/bundle'
   alias ber='bundle exec ruby'
   alias be='bundle exec'
+}
 
-  # For vim
+configure_vi_alias() {
   alias vi='vim'
+}
 
-  # For Python
+configure_python_alias() {
   alias mypy='mypy --ignore-missing-imports'
 
   if which python3 > /dev/null; then
@@ -48,15 +50,19 @@ configure_alias() {
   if which pip3 > /dev/null; then
     alias pip='pip3'
   fi
+}
 
-  # For peco
+configure_peco_alias() {
   alias w='peco_tmux_window'
   alias p='peco_tmux_pane'
+}
 
-  # For fzf
+configure_fzf_alias() {
   alias h='fzf_history'
   alias c='fzf_cd'
+}
 
+configure_sl_alias() {
   # Screen Lock Comannd
   alias sl='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 }
