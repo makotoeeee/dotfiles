@@ -45,3 +45,4 @@ homebrew_packages:
   - name: nkf
   - name: jq
   - name: postgresql
+  - name: pipenv
