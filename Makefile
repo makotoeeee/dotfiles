@@ -27,7 +27,7 @@ clone: ## Clone dotfiles repository
 
 run-ansible-playbook: ## Execute ansible playbook
 	@echo "$(ILOG) Run ansible-playbook"
-	@ansible-playbook -i hosts localhost.yml
+	@ansible-playbook -i $(DOTFILES_DIR)/hosts $(DOTFILES_DIR)/localhost.yml
 	@echo "$(ILOG) Finished ansible-playbook"
 
 destroy: ## Uninstall homebrew, Command Line Tools for Xcode.
