@@ -68,7 +68,6 @@ def define_module_args():
 
 def validate_state_value(state):
     if state in ('latest', 'absent'):
-        msg = state + " is not defined."
         return True
     else:
         return False
