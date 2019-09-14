@@ -1,0 +1,12 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+    
+    steps:
+    - name: Setup macOS
+      run: curl https://raw.githubusercontent.com/makotoeeee/dotfiles/master/Makefile | make install --file -
