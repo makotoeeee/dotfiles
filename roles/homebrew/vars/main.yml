@@ -46,3 +46,5 @@ homebrew_packages:
   - name: jq
   - name: postgresql
   - name: pipenv
+  - name: node
+  - name: postgresql
