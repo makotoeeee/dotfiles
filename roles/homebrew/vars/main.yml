@@ -16,6 +16,7 @@ homebrew_cask_packages:
   - name: java
   - name: android-studio
   - name: font-ricty-diminished
+  - name: visual-studio-code
 
 homebrew_packages:
   - name: awscli
