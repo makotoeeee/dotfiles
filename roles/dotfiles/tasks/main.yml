@@ -1,5 +1,5 @@
 - name: Backup dotfiles
-  move:
+  backup:
     src: "~/.{{ item | basename }}"
   with_fileglob:
     - "files/*"
