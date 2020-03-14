@@ -74,7 +74,6 @@ Plug 'w0rp/ale'
 " For Language Server
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
 
 " complete
 Plug 'prabirshrestha/asyncomplete.vim'
