@@ -5,7 +5,7 @@ homebrew_cask_packages:
   - name: google-chrome
   - name: firefox
   - name: docker
-  - name: virtualbox
+    #  - name: virtualbox CI(GithubActions)でインストールに失敗する
   - name: google-cloud-sdk
   - name: 1password
   - name: macvim
