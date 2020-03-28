@@ -19,11 +19,9 @@
     key: InitialKeyRepeat
     type: int 
     value: 15
-  notify: Restart osx 
 
 - name: Fastest KeyRepeat
   osx_defaults:
     key: lKeyRepeat
     type: int 
     value: 2
-  notify: Restart osx 
