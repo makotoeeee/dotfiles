@@ -53,6 +53,9 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 map ; <Plug>(expand_region_expand)
 map + <Plug>(expand_region_shrink)
 
+" For terminal
+tnoremap <C-[> <C-g><S-n>
+
 "============================================================
 " Plugin Manager 
 "============================================================
