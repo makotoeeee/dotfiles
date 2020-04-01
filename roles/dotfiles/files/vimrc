@@ -17,6 +17,7 @@ set hlsearch " 検索時にハイライトする
 set ambiwidth=double
 set hidden "バッファを保存しなくても切り替え可能にする
 set termwinkey=<C-g> "terminalのプレフィックスをC-wからC-gに変更する
+set shell=bash
 filetype plugin indent on
 
 "============================================================
