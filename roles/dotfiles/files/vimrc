@@ -142,45 +142,6 @@ EOS
 endfunction
 
 "============================================================
-" language-server 
-"============================================================
-" For Python 
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-
-if executable('go-langserver')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'go-langserver',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-        \ 'whitelist': ['go'],
-        \ })
-endif
-
-let g:lsp_diagnostics_enabled = 0 "Lintはaleで行うため無効にする
-
-"============================================================
-" For ale
-"============================================================
-"使用するlinterを指定する
-let g:ale_linters = {
-\   'python': ['flake8', 'mypy'],
-\}
-
-" linterの名前を表示する
-let g:ale_echo_msg_format = '[%linter%] %s'
-
-" 左端のシンボルカラムを表示したままにする
-"let g:ale_sign_column_always = 1
-
-" For python
-let g:ale_python_mypy_options = '--ignore-missing-imports'
-
-"============================================================
 " For eregex 
 "============================================================
 let g:eregex_default_enable = 0
