@@ -53,13 +53,13 @@ configure_python_alias() {
 }
 
 configure_peco_alias() {
-  alias w='peco_tmux_window'
   alias p='peco_tmux_pane'
 }
 
 configure_fzf_alias() {
   alias h='fzf_history'
   alias c='fzf_cd'
+  alias w='fzf_tmux_window'
 }
 
 configure_sl_alias() {
