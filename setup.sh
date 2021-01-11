@@ -8,10 +8,21 @@ function elog {
   echo "$(date  +'%FT%T') [error] $1"
 }
 
+function set_env() {
+  local os=$(uname)
+
+  case $os in
+    "Darwin")
+      export PATH=/opt/homebrew/bin:$PATH;;
+    *)
+      elog "Not supported OS"
+  esac
+}
+
 install_homebrew() {
   ilog "Install homebrew"
 
-  if test $(which brew); then
+  if test $(which /opt/homebrew/bin/brew); then
     ilog "homebrew is already installed."
   else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -60,6 +71,7 @@ install_vim-plug() {
 }
 
 main() {
+  set_env
   install_homebrew
   install_ansible
   install_ansible_modules
