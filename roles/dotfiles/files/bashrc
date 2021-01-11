@@ -6,6 +6,7 @@ configure_bashcompletion() {
 
 configure_history() {
   HISTSIZE=50000
+  export PROMPT_COMMAND='history -a; history -r'
 }
 
 configure_go() {
