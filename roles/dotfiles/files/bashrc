@@ -1,6 +1,13 @@
+is_darwin() {
+  uname | grep "Darwin" > /dev/null
+  return $?
+}
+
 configure_bashcompletion() {
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+  if is_darwin; then
+    if [ -f $(/opt/homebrew/bin/brew --prefix)/etc/bash_completion ]; then
+      . $(/opt/homebrew/bin/brew --prefix)/etc/bash_completion
+    fi
   fi
 }
 
@@ -20,7 +27,9 @@ configure_prompt() {
 }
 
 configure_homebrew() {
-  eval $(/opt/homebrew/bin/brew shellenv)
+  if is_darwin; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+  fi
 }
 
 configure_docker() {
