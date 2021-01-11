@@ -1,14 +1,14 @@
 #!/bin/bash
 
-function ilog {
+ilog() {
   echo "$(date  +'%FT%T') [info] $1"
 }
 
-function elog {
+elog() {
   echo "$(date  +'%FT%T') [error] $1"
 }
 
-function set_env() {
+set_env() {
   local os=$(uname)
 
   case $os in
