@@ -21,6 +21,10 @@ configure_homebrew() {
   eval $(/opt/homebrew/bin/brew shellenv)
 }
 
+configure_docker() {
+  PATH=$PATH:/usr/local/bin
+}
+
 configure_ls_alias() {
   alias ls='ls -G'
   alias ll='ls -lG'
