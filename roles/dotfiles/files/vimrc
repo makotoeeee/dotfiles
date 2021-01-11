@@ -145,3 +145,9 @@ endfunction
 " For eregex 
 "============================================================
 let g:eregex_default_enable = 0
+
+"============================================================
+" For fzf 
+"============================================================
+" Empty value to disable preview window altogether
+let g:fzf_preview_window = []
