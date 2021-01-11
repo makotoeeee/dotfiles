@@ -1,50 +1,27 @@
 homebrew_taps:
   - name: homebrew/cask-fonts
 
-homebrew_cask_packages:
-  - name: google-chrome
-  - name: firefox
-  - name: docker
-    #  - name: virtualbox CI(GithubActions)でインストールに失敗する
-  - name: google-cloud-sdk
-  - name: 1password
-  - name: macvim
-  - name: hyperswitch
-  - name: spectacle
-  - name: tor-browser
-  - name: java
-  - name: android-studio
-  - name: font-ricty-diminished
-  - name: visual-studio-code
-
 homebrew_packages:
-  - name: awscli
-  - name: terraform
   - name: vim
-  - name: coreutils # include gls
-  - name: direnv
   - name: fasd
-  - name: peco
   - name: bash
   - name: tmux
   - name: git
-  - name: ghq
-  - name: go
   - name: bash-completion
   - name: binutils
   - name: hub
-  - name: ruby
   - name: python
   - name: fzf
-  - name: ag
-  - name: sqlite3
   - name: htop
   - name: watch
-  - name: elixir
-  - name: node
   - name: nkf
   - name: jq
-  - name: postgresql
-  - name: pipenv
-  - name: node
-  - name: postgresql
+
+homebrew_cask_packages:
+  - name: spectacle
+  - name: alacritty
+    #- name: font-ricty-diminished
+    #- name: visual-studio-code
+#  - name: google-chrome
+#  - name: 1password
+#  - name: macvim
