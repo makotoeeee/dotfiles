@@ -1,9 +1,3 @@
-configure_bashcompletion() {
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
-}
-
 configure_history() {
   HISTSIZE=50000
 }
@@ -17,12 +11,8 @@ configure_prompt() {
   PS1='[\W]\$ '
 }
 
-configure_path() {
-  export PATH=~/.go/bin:/usr/local/bin:$PATH
-}
-
-configure_java() {
-  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+configure_homebrew() {
+  eval $(/opt/homebrew/bin/brew shellenv)
 }
 
 configure_ls_alias() {
@@ -62,11 +52,6 @@ configure_fzf_alias() {
   alias w='fzf_tmux_window'
 }
 
-configure_sl_alias() {
-  # Screen Lock Comannd
-  alias sl='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
-}
-
 configure_python() {
   export LC_ALL=ja_JP.UTF-8
 
@@ -99,14 +84,6 @@ fasd_exists() {
   fi
 }
 
-peco_exists() {
-  which peco > /dev/null
-  if [ $? -ne 0 ]; then
-    echo "Please install peco"
-    return 1
-  fi
-}
-
 fzf_exists() {
   which fzf > /dev/null
   if [ $? -ne 0 ]; then
@@ -133,17 +110,6 @@ fzf_cd() {
   local res=$(fasd -d | sort -rn | cut -c 12- | fzf)
   if [ -n "$res" ]; then
     cd $res
-  else
-    return 1
-  fi
-}
-
-peco_history() {
-  peco_exists
-  local res=$(history | sort -r | awk '{$1 = ""; print}' | peco --query "$READLINE_LINE")
-  if [ -n "$res" ]; then
-    READLINE_LINE="$res"
-    READLINE_POINT=${#res}
   else
     return 1
   fi
