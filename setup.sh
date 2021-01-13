@@ -13,9 +13,9 @@ set_env() {
 
   case $os in
     "Darwin")
-      export PATH=/opt/homebrew/bin:$PATH;;
+      export PATH=/opt/homebrew/bin:$PATH ;;
     *)
-      elog "Not supported OS"
+      elog "Not supported OS" ;;
   esac
 }
 
