@@ -1,4 +1,25 @@
 #!/bin/bash
+set -e
+
+is_darwin() {
+  local uname=$(uname)
+  if [ $uname = "Darwin" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+is_ubuntu() {
+  local uname=$(uname)
+  if [ $uname = "Linux" ]; then
+    if grep ID=ubuntu /etc/os-release > /dev/null 2>&1 ; then
+      return 0
+    fi
+  else
+    return 1
+  fi
+}
 
 ilog() {
   echo "$(date  +'%FT%T') [info] $1"
@@ -9,14 +30,7 @@ elog() {
 }
 
 set_env() {
-  local os=$(uname)
-
-  case $os in
-    "Darwin")
-      export PATH=/opt/homebrew/bin:$PATH ;;
-    *)
-      elog "Not supported OS" ;;
-  esac
+  export PATH=/opt/homebrew/bin:$PATH
 }
 
 install_homebrew() {
@@ -35,9 +49,20 @@ install_ansible() {
 
   if test $(which ansible); then
     ilog "ansible is already installed."
-  else
-    brew install ansible
+    return 0
+  fi
+
+  if is_darwin ; then
+    arch -arm64 brew install ansible
     ilog "Installed ansible"
+    return 0
+  fi
+
+  if is_ubuntu ; then
+    sudo apt update
+    sudo apt install ansible -y
+    ilog "Installed ansible"
+    return 0
   fi
 }
 
@@ -71,8 +96,8 @@ install_vim-plug() {
 }
 
 main() {
-  set_env
-  install_homebrew
+  is_darwin && set_env
+  is_darwin && install_homebrew
   install_ansible
   install_ansible_modules
   install_vim-plug
