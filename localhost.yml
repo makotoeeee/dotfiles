@@ -8,4 +8,5 @@
     - role: homebrew
       when: ansible_os_family == "Darwin"
     - role: apt 
-      when: ansible_os_family == "Ubuntu"
+      when: ansible_distribution == 'Ubuntu'
+
