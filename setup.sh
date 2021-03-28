@@ -16,6 +16,7 @@ is_ubuntu() {
     if grep ID=ubuntu /etc/os-release > /dev/null 2>&1 ; then
       return 0
     fi
+    return 1
   else
     return 1
   fi
