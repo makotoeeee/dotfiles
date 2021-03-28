@@ -23,7 +23,9 @@ configure_go() {
 }
 
 configure_prompt() {
-  PS1='[\W]\$ '
+  if is_darwin; then
+    PS1='[\W]\$ '
+  fi
 }
 
 configure_homebrew() {
