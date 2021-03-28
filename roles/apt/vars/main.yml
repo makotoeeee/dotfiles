@@ -1,0 +1,4 @@
+apt_packages:
+  - name: vim
+  - name: fasd
+  - name: fzf
