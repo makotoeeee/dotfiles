@@ -74,7 +74,9 @@ configure_fzf_alias() {
 }
 
 configure_python() {
-  export LC_ALL=ja_JP.UTF-8
+  if is_darwin; then
+    export LC_ALL=ja_JP.UTF-8
+  fi
 
   # For pyenv
   # export PYENV_ROOT="$HOME/.pyenv"
