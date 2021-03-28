@@ -83,24 +83,11 @@ run_ansible() {
   ilog "Finished ansible-playbook"
 }
 
-install_vim-plug() {
-  ilog "Install vim-plug"
-
-  if [ -f $HOME/.vim/autoload/plug.vim ]; then
-    ilog "vim-plug is already installed."
-  else
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    ilog "Installed vim-plug"
-  fi
-}
-
 main() {
   is_darwin && set_env
   is_darwin && install_homebrew
   install_ansible
   install_ansible_modules
-  install_vim-plug
   run_ansible
 }
 

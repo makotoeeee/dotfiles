@@ -2,6 +2,7 @@
   connection: local
   roles:
     - role: dotfiles
+    - role: vim
     - role: osx
       when: ansible_os_family == "Darwin"
     - role: homebrew
