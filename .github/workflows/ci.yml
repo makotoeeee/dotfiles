@@ -2,8 +2,11 @@ name: CI
 on: [push]
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
     steps:
     - uses: actions/checkout@v1
-    - name: Setup macOS
+    - name: Setup
       run: bash setup.sh
