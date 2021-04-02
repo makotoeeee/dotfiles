@@ -1,113 +1,101 @@
+#===========================================================
+# MacOS
+#===========================================================
 is_darwin() {
   uname | grep "Darwin" > /dev/null
   return $?
 }
 
-configure_bashcompletion() {
-  if is_darwin; then
-    if [ -f $(/opt/homebrew/bin/brew --prefix)/etc/bash_completion ]; then
-      . $(/opt/homebrew/bin/brew --prefix)/etc/bash_completion
-    fi
+#===========================================================
+# bash
+#===========================================================
+if is_darwin; then
+  if [ -f $(/opt/homebrew/bin/brew --prefix)/etc/bash_completion ]; then
+    . $(/opt/homebrew/bin/brew --prefix)/etc/bash_completion
   fi
-}
+fi
 
-configure_history() {
-  HISTSIZE=50000
-  export PROMPT_COMMAND='history -a; history -r'
-  HISTCONTROL=erasedups
-}
+#===========================================================
+# history
+#===========================================================
+HISTSIZE=50000
+export PROMPT_COMMAND='history -a; history -r'
+HISTCONTROL=erasedups
 
-configure_go() {
-  export GOPATH=$HOME/.go
-  export GO111MODULE=on
-}
+#===========================================================
+# Go
+#===========================================================
+export GOPATH=$HOME/.go
+export GO111MODULE=on
 
-configure_prompt() {
-  if is_darwin; then
-    PS1='[\W]\$ '
-  fi
-}
+#===========================================================
+# Prompt
+#===========================================================
+if is_darwin; then
+  PS1='[\W]\$ '
+fi
 
-configure_homebrew() {
-  if is_darwin; then
-    eval $(/opt/homebrew/bin/brew shellenv)
-  fi
-}
+#===========================================================
+# Homebrew
+#===========================================================
+if is_darwin; then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
-configure_docker() {
-  PATH=$PATH:/usr/local/bin
-}
+#===========================================================
+# Docker
+#===========================================================
+PATH=$PATH:/usr/local/bin
 
-configure_ls_alias() {
-  alias ls='ls -G'
-  alias ll='ls -lG'
-}
+#===========================================================
+# ls
+#===========================================================
+alias ls='ls -G'
+alias ll='ls -lG'
 
-configure_ruby_alias() {
-  alias bip='bundle install --path vendor/bundle'
-  alias ber='bundle exec ruby'
-  alias be='bundle exec'
-}
+#===========================================================
+# Ruby 
+#===========================================================
+alias bip='bundle install --path vendor/bundle'
+alias ber='bundle exec ruby'
+alias be='bundle exec'
 
-configure_vi_alias() {
-  alias vi='vim'
-}
+#===========================================================
+# vi 
+#===========================================================
+alias vi='vim'
 
-configure_python_alias() {
-  alias mypy='mypy --ignore-missing-imports'
+#===========================================================
+# Python 
+#===========================================================
+alias mypy='mypy --ignore-missing-imports'
 
-  if which python3 > /dev/null; then
-    alias python='python3'
-  fi
+if which python3 > /dev/null; then
+  alias python='python3'
+fi
 
-  if which pip3 > /dev/null; then
-    alias pip='pip3'
-  fi
-}
+if which pip3 > /dev/null; then
+  alias pip='pip3'
+fi
 
-configure_peco_alias() {
-  alias p='peco_tmux_pane'
-}
+if is_darwin; then
+  export LC_ALL=ja_JP.UTF-8
+fi
 
-configure_fzf_alias() {
-  alias h='fzf_history'
-  alias c='fzf_cd'
-  alias w='fzf_tmux_window'
-}
+# For pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
-configure_python() {
-  if is_darwin; then
-    export LC_ALL=ja_JP.UTF-8
-  fi
+# For pipenv
+export PIPENV_VENV_IN_PROJECT=1
 
-  # For pyenv
-  # export PYENV_ROOT="$HOME/.pyenv"
-  # export PATH="$PYENV_ROOT/bin:$PATH"
-  # eval "$(pyenv init -)"
-
-  # For pipenv
-  export PIPENV_VENV_IN_PROJECT=1
-}
-
-configure_direnv() {
-  if which direnv > /dev/null; then
-    eval "$(direnv hook bash)"
-  fi
-}
-
-configure_fasd() {
-  if which fasd > /dev/null; then
-    eval "$(fasd --init auto)"
-  fi
-}
-
-fasd_exists() {
-  which fasd > /dev/null
-  if [ $? -ne 0 ]; then
-    echo "Please install fasd"
-    return 1
-  fi
-}
+#===========================================================
+# fzf 
+#===========================================================
+alias h='fzf_history'
+alias c='fzf_cd'
+alias w='fzf_tmux_window'
 
 fzf_exists() {
   which fzf > /dev/null
@@ -150,35 +138,24 @@ fzf_tmux_pane() {
   tmux list-panes | fzf | awk -F':' '{print $1}' | xargs tmux select-pane -t
 }
 
-configure_aws() {
-  complete -C '/usr/local/bin/aws_completer' aws
-}
+#===========================================================
+# Direnv 
+#===========================================================
+if which direnv > /dev/null; then
+  eval "$(direnv hook bash)"
+fi
 
-wifi() {
-  local usage="Usage: ${FUNCNAME[0]} [on] [off]"
+#===========================================================
+# fasd 
+#===========================================================
+if which fasd > /dev/null; then
+  eval "$(fasd --init auto)"
+fi
 
-  if [ "$#" -ne 1 ]; then
-    echo "$usage"
+fasd_exists() {
+  which fasd > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install fasd"
     return 1
   fi
-  
-  if [ "$1" == "on" ]; then 
-    networksetup -setairportpower en0 on
-  elif [ "$1" == "off" ]; then 
-    networksetup -setairportpower en0 off
-  else
-    echo "$usage"
-    return 1
-  fi
 }
-
-eval_funcs() {
-  # 関数名が"configure_*"の関数を実行
-  local funcs=$(declare -f | grep -oE "configure_\w+")
-
-  for i in $(echo ${funcs}) ; do
-    eval ${i}
-  done
-}
-
-eval_funcs
