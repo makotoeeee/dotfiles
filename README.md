@@ -5,6 +5,6 @@ Set up my osx and ubuntu with Ansible. :computer:
 
 ```
 git clone https://github.com/makotoeeee/dotfiles
-bash setup.sh
+make
 sudo shutdown -r now
 ```
