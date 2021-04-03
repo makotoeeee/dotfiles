@@ -54,7 +54,8 @@ install_ansible() {
   fi
 
   if is_darwin ; then
-    arch -arm64 brew install ansible
+    # work around
+    arch -arm64 brew install ansible || brew install ansible
     ilog "Installed ansible"
     return 0
   fi
