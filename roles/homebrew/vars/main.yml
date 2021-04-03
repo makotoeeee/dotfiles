@@ -16,14 +16,16 @@ homebrew_packages:
   - name: watch
   - name: nkf
   - name: jq
+  - name: awscli
+  - name: rust
 
 homebrew_cask_packages:
   - name: spectacle
-  - name: alacritty
   - name: zoom
   - name: visual-studio-code
   - name: kindle
-#  - name: font-ricty-diminished
-#  - name: google-chrome
-#  - name: 1password
-#  - name: macvim
+# - name: font-ricty-diminished
+# - name: google-chrome
+# - name: 1password
+# - name: macvim
+# - name: alacritty
