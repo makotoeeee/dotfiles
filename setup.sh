@@ -111,7 +111,7 @@ main() {
   install_ansible
   install_ansible_modules
   run_ansible
-  install_alacritty
+  is_darwin && install_alacritty
 }
 
 main
