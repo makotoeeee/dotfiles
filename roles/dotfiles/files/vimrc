@@ -63,7 +63,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim'
 "Plug 'vim-scripts/vim-auto-save'
 Plug 'othree/eregex.vim' " 正規表現 [検索]:M/ [置換]:S/
 Plug 'scrooloose/nerdtree'
@@ -74,8 +73,13 @@ Plug 'terryma/vim-expand-region'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" For Elixir
+" For Language Servers 
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
+
 
 "============================================================
 " Color 
@@ -151,3 +155,8 @@ let g:eregex_default_enable = 0
 "============================================================
 " Empty value to disable preview window altogether
 let g:fzf_preview_window = []
+
+"============================================================
+" For vim-lsp 
+"============================================================
+let g:lsp_diagnostics_enabled = 0 
