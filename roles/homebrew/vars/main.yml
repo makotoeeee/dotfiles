@@ -26,8 +26,8 @@ homebrew_cask_packages:
   - name: kindle
   - name: hyperswitch
   - name: authy
+  - name: alacritty
 # - name: font-ricty-diminished
 # - name: google-chrome
 # - name: 1password
 # - name: macvim
-# - name: alacritty

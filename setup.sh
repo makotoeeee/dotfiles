@@ -85,33 +85,12 @@ run_ansible() {
   ilog "Finished ansible-playbook"
 }
 
-# homebrew版がm1に対応していないのでbuildして使う
-install_alacritty() {
-  ilog "Install alacritty"
-
-  if [ -d /Applications/Alacritty.app ]; then
-    ilog "alacritty is already installed."
-  else
-    (
-      cd /tmp
-      git clone https://github.com/alacritty/alacritty
-      cd alacritty
-      make app
-      cp -r target/release/osx/Alacritty.app /Applications/
-      rm -rf /tmp/alacritty
-    )
-
-    ilog "Installed alacritty"
-  fi
-}
-
 main() {
   is_darwin && set_env
   is_darwin && install_homebrew
   install_ansible
   install_ansible_modules
   run_ansible
-  is_darwin && install_alacritty
 }
 
 main
