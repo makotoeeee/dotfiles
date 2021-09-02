@@ -18,6 +18,7 @@ homebrew_packages:
   - name: jq
   - name: awscli
   - name: rust
+  - name: node
 
 homebrew_cask_packages:
   - name: spectacle
