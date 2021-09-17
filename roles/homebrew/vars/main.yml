@@ -4,21 +4,22 @@ homebrew_taps:
 homebrew_packages:
   - name: vim
   - name: fasd
-  - name: bash
   - name: tmux
   - name: git
   - name: bash-completion
   - name: binutils
   - name: hub
-  - name: python
   - name: fzf
   - name: htop
   - name: watch
   - name: nkf
   - name: jq
   - name: awscli
+  - name: python
+  - name: bash
   - name: rust
   - name: node
+  - name: go
 
 homebrew_cask_packages:
   - name: spectacle
