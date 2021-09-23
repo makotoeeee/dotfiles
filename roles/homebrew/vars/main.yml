@@ -26,9 +26,10 @@ homebrew_cask_packages:
   - name: zoom
   - name: visual-studio-code
   - name: kindle
-  - name: hyperswitch
+  - name: alt-tab
   - name: authy
   - name: alacritty
+  - name: utm
 # - name: font-ricty-diminished
 # - name: google-chrome
 # - name: 1password
