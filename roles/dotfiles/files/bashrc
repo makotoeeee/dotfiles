@@ -59,6 +59,7 @@ alias ll='ls -lG'
 alias bip='bundle install --path vendor/bundle'
 alias ber='bundle exec ruby'
 alias be='bundle exec'
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 #===========================================================
 # vi 
