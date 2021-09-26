@@ -30,6 +30,7 @@ homebrew_cask_packages:
   - name: authy
   - name: alacritty
   - name: utm
+  - name: keyboardcleantool 
 # - name: font-ricty-diminished
 # - name: google-chrome
 # - name: 1password
