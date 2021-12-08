@@ -86,6 +86,13 @@ Plug 'alvan/vim-closetag'
 Plug 'mattn/emmet-vim'
 call plug#end()
 
+"============================================================
+" asyncomplete.vim
+"============================================================
+" Tabで補完
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 "============================================================
 " Color 
