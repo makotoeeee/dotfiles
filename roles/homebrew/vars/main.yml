@@ -20,6 +20,7 @@ homebrew_packages:
   - name: rust
   - name: node
   - name: go
+  - name: zellij
 
 homebrew_cask_packages:
   - name: spectacle
@@ -33,5 +34,5 @@ homebrew_cask_packages:
   - name: keyboardcleantool 
 # - name: font-ricty-diminished
 # - name: google-chrome
-# - name: 1password
+  - name: 1password
 # - name: macvim
