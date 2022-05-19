@@ -23,6 +23,11 @@ export PROMPT_COMMAND='history -a; history -r'
 HISTCONTROL=erasedups
 
 #===========================================================
+# Zellij 
+#===========================================================
+alias zellij='zellij options --simplified-ui true --no-pane-frames'
+
+#===========================================================
 # Go
 #===========================================================
 export GOPATH=$HOME/.go
