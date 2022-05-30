@@ -174,3 +174,18 @@ let g:fzf_preview_window = []
 " For vim-lsp 
 "============================================================
 "let g:lsp_diagnostics_enabled = 0 
+
+"============================================================
+" For Coc 
+"============================================================
+"tabで補完候補を選択
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
+    let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
