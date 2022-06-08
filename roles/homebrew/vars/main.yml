@@ -21,6 +21,7 @@ homebrew_packages:
   - name: node
   - name: go
   - name: zellij
+  - name: bat
 
 homebrew_cask_packages:
   - name: spectacle
