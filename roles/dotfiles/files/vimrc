@@ -170,3 +170,10 @@ function! CheckBackspace() abort
     let col = col('.') - 1
       return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+"============================================================
+" For golang 
+"============================================================
+autocmd FileType go setlocal noexpandtab
+autocmd FileType go setlocal tabstop=4
+autocmd FileType go setlocal shiftwidth=4
