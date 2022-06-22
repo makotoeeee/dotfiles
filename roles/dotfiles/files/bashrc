@@ -170,3 +170,13 @@ fasd_exists() {
 # psql 
 #===========================================================
 export PATH=/opt/homebrew/Cellar/libpq/14.1/bin/:$PATH
+
+
+#===========================================================
+# tmux 
+#===========================================================
+ide() {
+  tmux split-window -v
+  tmux resize-pane -D 15
+  tmux select-pane -t 0
+}
