@@ -18,6 +18,7 @@ set ambiwidth=double
 set hidden "バッファを保存しなくても切り替え可能にする
 set termwinkey=<C-g> "terminalのプレフィックスをC-wからC-gに変更する
 set shell=bash
+set ttimeoutlen=10 "ノーマルモードに戻るのが遅いのでキーコードシーケンスが終了するのを待つ時間を短くする
 filetype plugin indent on
 
 "============================================================
