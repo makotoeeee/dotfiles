@@ -12,7 +12,7 @@ set nocompatible
 set backspace=indent,eol,start
 set colorcolumn=80
 set clipboard=unnamed,autoselect "ヤンクでクリップボードにコピー
-set autochdir " 自動で開いているファイルのディレクトリに移動する
+"set autochdir " 自動で開いているファイルのディレクトリに移動する
 set hlsearch " 検索時にハイライトする
 set ambiwidth=double
 set hidden "バッファを保存しなくても切り替え可能にする
