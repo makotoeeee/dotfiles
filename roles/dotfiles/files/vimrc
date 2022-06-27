@@ -63,12 +63,9 @@ tnoremap <C-[> <C-g><S-n>
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-surround'
 "Plug 'vim-scripts/vim-auto-save'
 Plug 'othree/eregex.vim' " 正規表現 [検索]:M/ [置換]:S/
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/vim-easy-align'
-Plug 'terryma/vim-expand-region'
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
