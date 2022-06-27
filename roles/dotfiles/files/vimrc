@@ -50,10 +50,6 @@ imap <C-k> <ESC>d$i
 " For NerdTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
-" For vim-expand-region
-map ; <Plug>(expand_region_expand)
-map + <Plug>(expand_region_shrink)
-
 " For terminal
 tnoremap <C-[> <C-g><S-n>
 
@@ -124,24 +120,6 @@ function DisableIme()
 endfunction
 
 call ConfigureMac()
-
-"============================================================
-" Functions 
-"============================================================
-function! Cal()
-python<<EOS
-import calendar
-import datetime
-import vim
-
-today = datetime.date.today()
-month = today.month
-last_day = calendar.monthrange(today.year, today.month)[-1]
-month_range = ["{0:02d}/{1:02d}".format(month, i) for i in range(1, last_day)]
-current_line_num = vim.current.window.cursor[0]
-vim.current.buffer.append(month_range, current_line_num)
-EOS
-endfunction
 
 "============================================================
 " For eregex 
