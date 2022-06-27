@@ -44,7 +44,7 @@ imap <C-h> <Backspace>
 imap <C-k> <ESC>d$i
 
 " InsertLeaveでC-cが効かないのでC-cをESCに割り当てる
-imap <C-c> <esc>
+"imap <C-c> <esc>
 
 " For NerdTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
