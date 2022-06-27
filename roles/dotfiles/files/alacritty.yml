@@ -38,6 +38,8 @@ colors:
     cyan:    '#93a1a1' # base1
     white:   '#fdf6e3' # base3
 
-# =で文字拡大
 key_bindings:
+      # =で文字拡大
     - { key: Minus,   mods: Command|Shift, action: IncreaseFontSize }
+      # vimでctrl + [が効かないので対応
+    - { key: "LBracket",       mods: Control,   chars: "\x1b" }
