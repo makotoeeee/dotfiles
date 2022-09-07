@@ -1,5 +1,5 @@
 # My dotfiles 
-Set up my osx and ubuntu with Ansible. :computer:
+Set up my macOS and ubuntu with Ansible. :computer:
 
 ## Usage
 
