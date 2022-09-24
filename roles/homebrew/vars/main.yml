@@ -37,3 +37,4 @@ homebrew_cask_packages:
 # - name: google-chrome
   - name: 1password
 # - name: macvim
+  - name: deepl
