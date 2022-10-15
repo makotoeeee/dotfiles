@@ -22,6 +22,8 @@ homebrew_packages:
   - name: go
   - name: zellij
   - name: bat
+  - name: speedtest-cli
+  - name: poetry
 
 homebrew_cask_packages:
   - name: spectacle
