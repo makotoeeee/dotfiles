@@ -20,7 +20,6 @@ set termwinkey=<C-g> "terminalのプレフィックスをC-wからC-gに変更�
 set shell=bash
 set ttimeoutlen=10 "ノーマルモードに戻るのが遅いのでキーコードシーケンスが終了するのを待つ時間を短くする
 filetype plugin indent on
-let g:netrw_banner=0 "netrw ヘッダを表示しない
 
 "============================================================
 " Indent 
@@ -48,7 +47,7 @@ imap <C-k> <ESC>d$i
 " InsertLeaveでC-cが効かないのでC-cをESCに割り当てる
 "imap <C-c> <esc>
 
-" For NerdTree
+" For NERDTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " For terminal
