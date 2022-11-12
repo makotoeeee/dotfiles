@@ -40,3 +40,4 @@ homebrew_cask_packages:
   - name: 1password
 # - name: macvim
   - name: deepl
+  - name: slack
